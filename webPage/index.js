@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
 const getBooks = (request, response) => {
-  pool.query('SELECT * FROM public.item Where pos like ''POS_3%'' limit 10', (error, results) => {
+  pool.query('SELECT * FROM public.item limit 10', (error, results) => {
     if (error) {
       throw error
     }
@@ -30,7 +30,7 @@ const addBook = (request, response) => {
 }
 
 app
-  .route('/books')
+  .route('/items')
   // GET endpoint
   .get(getBooks)
   // POST endpoint
